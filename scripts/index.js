@@ -60,6 +60,7 @@ translateBtn.addEventListener('click', (event) => {
         inputControl.value = '';
         inputControl.classList.add('border-5');
         inputControl.classList.add('border-danger');
+        inputControl.focus();
     }
 });
 
