@@ -1,0 +1,46 @@
+body {
+    @include flex_style(column, space-between);
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-image: url('../images/keyboard.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: $font_family;
+    color: white;
+}
+
+main {
+    @include flex_style(column);
+    height: 100%;
+    width: 100%;
+
+    & form {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+        width: 100%;
+        padding: 50px;
+        color: black;
+
+        & div {
+            @include flex_style(row, space-between);
+
+            & label {
+                visibility: hidden;
+            }
+        }
+
+        & button {
+            width: 80px;
+        }
+    }
+}
+
+footer {
+    @include flex_style(column, end, end);
+    height: 80px;
+    width: 100%;
+    padding: 0 10px 10px 0;
+}
