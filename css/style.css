@@ -26,9 +26,14 @@ main form {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 10px;
-  width: 100%;
-  padding: 50px;
+  width: 50%;
   color: black;
+}
+@media only screen and (max-width: 600px) {
+  main form {
+    width: 100%;
+    padding: 50px;
+  }
 }
 main form div {
   display: flex;
@@ -37,10 +42,7 @@ main form div {
   align-items: center;
 }
 main form div label {
-  visibility: hidden;
-}
-main form button {
-  width: 80px;
+  display: none;
 }
 
 footer {
@@ -51,4 +53,8 @@ footer {
   height: 80px;
   width: 100%;
   padding: 0 10px 10px 0;
+}
+
+#output {
+  height: 200px;
 }
