@@ -1,0 +1,15 @@
+{
+  "name": "morse-code-testing",
+  "version": "1.0.0",
+  "description": "Test morse code translations",
+  "main": "./src/translator.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "author": "lgsoftdev",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "type": "module"
+}

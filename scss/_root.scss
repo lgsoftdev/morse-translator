@@ -25,7 +25,7 @@ main {
 
         @media only screen and (max-width: $media_max_width){
             width: 100%;
-            padding: 50px;
+            padding: $px_large;
         }
 
         & div {
@@ -48,7 +48,7 @@ main {
 
 footer {
     @include flex_style(column, end, end);
-    height: 80px;
+    height: $px_xlarge;
     width: 100%;
     padding: 0 $px_small $px_small 0;
 }

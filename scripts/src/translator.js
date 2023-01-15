@@ -1,16 +1,16 @@
 import { fetchData } from "./utils.js";
 
-const englishTextToMorseCode = (text, mapping) => {
+export const englishTextToMorseCode = (text, mapping) => {
     const array = Array.from(text.trim().toUpperCase()).filter(item => item !== ' ');
     return getTranslation (array, mapping);
 }
 
-const morseCodeToEnglishText = (code, mapping) => {
+export const morseCodeToEnglishText = (code, mapping) => {
     const array = code.trim().split(' ');
     return getTranslation (array, mapping);
 }
 
-const getTranslation = (array, mapping) => {
+export const getTranslation = (array, mapping) => {
     const fullTranslation = array.reduce((acc, item) => {
         const itemTranslation = mapping[item];
         
@@ -20,7 +20,7 @@ const getTranslation = (array, mapping) => {
             return acc += '?' + ' ';
         }
     }, '');
-    return fullTranslation;
+    return fullTranslation.trim();
 }
 
 const encodeDecode = (mapping, translationType, toTranslate) => {
@@ -28,7 +28,7 @@ const encodeDecode = (mapping, translationType, toTranslate) => {
     return morseCodeToEnglishText(toTranslate, mapping);  
 }
 
-export const translate = async (translationType, toTranslate) => {
+export const getMorseSequences = async (translationType) => {
     const morsecode = 'morsecode';
     const mcReverse = 'morsecode-reverse';
     let json, mapping;
@@ -51,6 +51,15 @@ export const translate = async (translationType, toTranslate) => {
             mapping = JSON.parse(window.sessionStorage.getItem(mcReverse));   
         }
     
+        return mapping;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const translate = async (translationType, toTranslate) => {
+    try {
+        let mapping = await getMorseSequences(translationType);
         return encodeDecode(mapping, translationType, toTranslate)
     } catch (error) {
         throw error;
