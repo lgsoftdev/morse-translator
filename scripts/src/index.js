@@ -49,7 +49,7 @@ selectControl.addEventListener("change", () => {
   resetForm();
 });
 
-inputControl.addEventListener("keyup", () => {
+inputControl.addEventListener("beforeinput", () => {
   if (outputControl.value !== "") {
     outputControl.value = "";
     outputControl.classList.remove("fs-3");
