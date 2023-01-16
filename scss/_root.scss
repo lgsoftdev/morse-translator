@@ -1,58 +1,58 @@
 body {
-    @include flex_style(column, space-between);
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    background-image: url('../images/keyboard.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    font-family: $font_family;
-    color: white;
+  @include flex_style(column, space-between);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-image: url("../images/keyboard.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: $font_family;
+  color: white;
 }
 
 main {
-    @include flex_style(column);
-    height: 100%;
-    width: 100%;
+  @include flex_style(column);
+  height: 100%;
+  width: 100%;
 
-    & form {
-        display: grid;
-        grid-template-columns: 1fr;
-        row-gap: $px_small;
-        width: 50%;
-        color: black;
+  & form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: $px_small;
+    width: 50%;
+    color: black;
 
-        @media only screen and (max-width: $media_max_width){
-            width: 100%;
-            padding: $px_large;
-        }
-
-        & div {
-            @include flex_style(row, space-between);
-
-            & label {
-                border-radius: $px_xsmall;
-                padding-left: $px_small;
-                padding-right: $px_small; 
-                display: none;
-            }
-        }
-
-        & span {
-            @include flex_style(row);
-            visibility: hidden;
-        }
+    @media only screen and (max-width: $media_max_width) {
+      width: 100%;
+      padding: $px_medium;
     }
+
+    & div {
+      @include flex_style(row, space-between);
+
+      & label {
+        border-radius: $px_xsmall;
+        padding-left: $px_small;
+        padding-right: $px_small;
+        display: none;
+      }
+    }
+
+    & span {
+      @include flex_style(row);
+      visibility: hidden;
+    }
+  }
 }
 
 footer {
-    @include flex_style(column, end, end);
-    height: $px_xlarge;
-    width: 100%;
-    padding: 0 $px_small $px_small 0;
+  @include flex_style(column, end, end);
+  height: auto;
+  width: 100%;
+  padding: 0 $px_small $px_small 0;
 }
 
 #output {
-    height: 200px;
+  height: 200px;
 }
