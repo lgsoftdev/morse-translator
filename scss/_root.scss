@@ -29,7 +29,7 @@ main {
     }
 
     & div {
-      @include flex_style(row, space-between);
+      @include flex_style(row, end);
 
       & label {
         border-radius: $px_xsmall;
@@ -41,7 +41,6 @@ main {
 
     & span {
       @include flex_style(row);
-      visibility: hidden;
     }
   }
 }
