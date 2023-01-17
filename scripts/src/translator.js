@@ -4,7 +4,7 @@ export const getTranslation = (mapping, toTranslate, delimiter, join) => {
   const array = toTranslate.toUpperCase().split(delimiter);
   console.log(array);
   const translationArr = array.map((element) => {
-    return mapping[element];
+    return mapping[element] || "?";
   });
   return translationArr.join(join);
 };
