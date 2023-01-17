@@ -1,6 +1,6 @@
 import { fetchData } from "./utils.js";
 
-const getTranslation = (mapping, toTranslate, delimiter, join) => {
+export const getTranslation = (mapping, toTranslate, delimiter, join) => {
   const array = toTranslate.toUpperCase().split(delimiter);
   console.log(array);
   const translationArr = array.map((element) => {
@@ -9,14 +9,14 @@ const getTranslation = (mapping, toTranslate, delimiter, join) => {
   return translationArr.join(join);
 };
 
-const encodeDecode = (mapping, translationType, toTranslate) => {
+export const encodeDecode = (mapping, translationType, toTranslate) => {
   if (translationType == 1) {
     return getTranslation(mapping, toTranslate, "", " ");
   }
   return getTranslation(mapping, toTranslate, " ", "");
 };
 
-export const getMorseSequences = async (translationType) => {
+const getMorseSequences = async (translationType) => {
   const morsecode = "morsecode";
   const mcReverse = "morsecode-reverse";
   let json, mapping;

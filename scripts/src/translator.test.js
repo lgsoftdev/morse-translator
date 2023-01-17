@@ -1,7 +1,4 @@
-import {
-  englishTextToMorseCode,
-  morseCodeToEnglishText,
-} from "./translator.js";
+import { getTranslation, encodeDecode } from "./translator.js";
 
 const morseSequences = {
   A: ".-",
@@ -40,6 +37,7 @@ const morseSequences = {
   8: "---..",
   9: "----.",
   0: "-----",
+  " ": "/",
 };
 
 const reverseMorseCode = Object.entries(morseSequences).reduce((acc, entry) => {
@@ -47,39 +45,31 @@ const reverseMorseCode = Object.entries(morseSequences).reduce((acc, entry) => {
   return acc;
 }, {});
 
-const english = "help";
-const morseCode = ".... . .-.. .--.";
+const english = "learn to code";
+const morseCode = ".-.. . .- .-. -. / - --- / -.-. --- -.. .";
 
-describe("englishTextToMorseCode tests", () => {
+describe("getTranslation tests", () => {
   it("Should be defined", () => {
-    expect(englishTextToMorseCode(english, morseSequences)).toBeDefined();
+    expect(getTranslation(morseSequences, english, " ", "")).toBeDefined();
   });
 
   it("Should translate English text to Morse Code", () => {
-    expect(englishTextToMorseCode(english, morseSequences)).toBe(morseCode);
+    expect(getTranslation(morseSequences, english, "", " ")).toBe(morseCode);
   });
 
-  it("Should return a ? within the result for unrecognised text characters", () => {
-    expect(englishTextToMorseCode(english + "@", morseSequences)).toBe(
-      morseCode + " ?"
+  it("Should translate Morse Code to English text", () => {
+    expect(getTranslation(reverseMorseCode, morseCode, " ", "")).toBe(
+      english.toUpperCase()
     );
   });
 });
 
-describe("morseCodeToEnglishText tests", () => {
+describe("encodeDecode tests", () => {
   it("Should be defined", () => {
-    expect(morseCodeToEnglishText(morseCode, reverseMorseCode)).toBeDefined();
+    expect(encodeDecode(morseSequences, 1, english)).toBeDefined();
   });
 
-  it("Should translate Morse Code to English text", () => {
-    expect(morseCodeToEnglishText(morseCode, reverseMorseCode)).toBe(
-      Array.from(english.toUpperCase()).join(" ")
-    );
-  });
-
-  it("Should return a ? within the result for invalid Morse Code", () => {
-    expect(
-      morseCodeToEnglishText(morseCode + " .......", reverseMorseCode)
-    ).toBe(Array.from(english.toUpperCase()).join(" ") + " ?");
+  it("Should return a string", () => {
+    expect(typeof encodeDecode(morseSequences, 1, english)).toBe("string");
   });
 });
