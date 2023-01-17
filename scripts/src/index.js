@@ -49,10 +49,23 @@ selectControl.addEventListener("change", () => {
   resetForm();
 });
 
-inputControl.addEventListener("beforeinput", () => {
-  if (outputControl.value !== "") {
-    outputControl.value = "";
-    outputControl.classList.remove("fs-3");
+inputControl.addEventListener("input", () => {
+  const pattern = /[^A-z0-9.?!,\s]/;
+  const pattern2 = /[^.\-/\s]/;
+
+  errorMsg.style.visibility = "hidden";
+
+  if (selectControl.value == 1 && pattern.test(inputControl.value)) {
+    errorMsg.textContent =
+      "Only A-Z, a-z, 0-9, full-stop (.), question mark (?), exclamation mark (!), comma (,), and space characters are allowed.";
+    errorMsg.style.visibility = "visible";
+  } else if (selectControl.value == 2 && pattern2.test(inputControl.value)) {
+    errorMsg.textContent =
+      "Only a full-stop (.), hypen (-), forward slash (/) and space characters are allowed.";
+    errorMsg.style.visibility = "visible";
+  } else {
+    //Default content
+    errorMsg.textContent = "An error occurred. Please try again.";
   }
 });
 
