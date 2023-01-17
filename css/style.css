@@ -38,7 +38,7 @@ main form {
 main form div {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
 }
 main form div label {
@@ -52,7 +52,6 @@ main form span {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
 }
 
 footer {
